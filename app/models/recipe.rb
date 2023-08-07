@@ -1,5 +1,3 @@
-
-
 # Represents a food item that can be used in recipes.
 class Recipe < ApplicationRecord
   belongs_to :user
