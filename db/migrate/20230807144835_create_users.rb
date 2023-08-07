@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+
 
 # Represents a food item that can be used in recipes.
 class CreateUsers < ActiveRecord::Migration[7.0]
