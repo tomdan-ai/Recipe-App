@@ -9,6 +9,7 @@ AllCops:
     - "node_modules/**/*"
 
   DisplayCopNames: true
+  FrozenStringLiteral: false
 
 Layout/LineLength:
   Max: 120
