@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
 
   # Add the following lines to create routes for viewing recipe details and deleting recipes
-  resources :recipes, only: %i[show destroy index]
+  # config/routes.rb
+  resources :recipes, only: [:index, :show, :destroy, :new, :create]
+
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

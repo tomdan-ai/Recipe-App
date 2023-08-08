@@ -56,3 +56,6 @@ group :test do
 end
 # Registration and authentication
 gem 'devise'
+
+# Authorization
+gem 'cancancan'
