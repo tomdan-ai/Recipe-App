@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users
 
@@ -7,7 +5,7 @@ Rails.application.routes.draw do
 
   # Add the following lines to create routes for viewing recipe details and deleting recipes
   # config/routes.rb
-  resources :recipes, only: [:index, :show, :destroy, :new, :create]
+  resources :recipes, only: %i[index show destroy new create]
 
 
 
