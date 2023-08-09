@@ -1,15 +1,104 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+.food-table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2em;
+  margin: 0 7em;
+}
+
+.add-food-form-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2em;
+  margin: 0 7em;
+}
+
+.add-food-forms-container{
+    width: 30%;
+}
+
+.add-food-form-label-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8em;
+  width: 100%;
+}
+
+.add-food-form-label{
+    font-family: cursive;
+    font-size: 1em;
+}
+
+.add-food-form-input{
+    font-family: cursive;
+    font-size: 0.8em;
+    padding: 3px 5px ;
+}
+
+.create-food-btn{
+    width: 100%;
+    padding: 4px 0;
+    margin: 0.8em 0;
+    background-color: #0073cf;
+    border:1px solid #0073cf;
+    color: #fff;
+}
+
+
+table {
+  width: 100%;
+  border: 1px solid #222;
+  border-collapse: collapse;
+  font-family: cursive;
+}
+
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+
+th {
+  font-size: 1.5em;
+  border: 1px solid #222;
+}
+
+td {
+  font-size: 1.2em;
+  border: 1px solid #222;
+  text-align: center;
+}
+
+tr.table-header-row {
+  background-color: #888;
+}
+
+.add-food-btn-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.add-food-btn {
+  padding: 2px 8px;
+  font-size: 1.2em;
+  font-family: cursive;
+  border: 1px solid #222;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #222;
+  background-color: #aaa;
+}
+
+.food-delete-btn {
+  border-style: none;
+  font-family: cursive;
+  font-size: 1.2em;
+  color: blue;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
