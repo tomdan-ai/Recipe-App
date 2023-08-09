@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Represents a food item that can be used in recipes.
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Permit the required parameters for user sign-up
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!

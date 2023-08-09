@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users
   # root 'foods#index' 
@@ -8,7 +6,10 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :new, :create, :destroy]
 
   # Add the following lines to create routes for viewing recipe details and deleting recipes
-  resources :recipes, only: %i[show destroy index]
+  # config/routes.rb
+  resources :recipes, only: %i[index show destroy new create]
+
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
