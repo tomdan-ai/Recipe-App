@@ -1,4 +1,3 @@
-# frozen_string_literal: true
-
+# Permit the required parameters for user sign-up
 module RecipesHelper
 end

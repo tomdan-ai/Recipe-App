@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Represents a food item that can be used in recipes.
 class CreateRecipeFoods < ActiveRecord::Migration[7.0]
   def change

@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# Permit the required parameters for user sign-up
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
