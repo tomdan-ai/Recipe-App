@@ -16,8 +16,8 @@
   margin: 0 7em;
 }
 
-.add-food-forms-container{
-    width: 30%;
+.add-food-forms-container {
+  width: 30%;
 }
 
 .add-food-form-label-input-container {
@@ -27,26 +27,25 @@
   width: 100%;
 }
 
-.add-food-form-label{
-    font-family: cursive;
-    font-size: 1em;
+.add-food-form-label {
+  font-family: cursive;
+  font-size: 1em;
 }
 
-.add-food-form-input{
-    font-family: cursive;
-    font-size: 0.8em;
-    padding: 3px 5px ;
+.add-food-form-input {
+  font-family: cursive;
+  font-size: 0.8em;
+  padding: 3px 5px;
 }
 
-.create-food-btn{
-    width: 100%;
-    padding: 4px 0;
-    margin: 0.8em 0;
-    background-color: #0073cf;
-    border:1px solid #0073cf;
-    color: #fff;
+.create-food-btn {
+  width: 100%;
+  padding: 4px 0;
+  margin: 0.8em 0;
+  background-color: #0073cf;
+  border: 1px solid #0073cf;
+  color: #fff;
 }
-
 
 table {
   width: 100%;
