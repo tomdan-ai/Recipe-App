@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   def index
     @user_id = current_user.id # Retrieve user_id from parameters
-    @foods = @user_id.present? ? Food.where(user_id: @user_id) : Food.all
+    @foods = @user_id.present? ? Food.where(user_id: @user_id) : []
   end
 
   def new
