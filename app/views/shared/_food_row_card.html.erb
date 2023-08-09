@@ -1,0 +1,13 @@
+
+<tr>
+    <td><%=food.name %> </td>
+    <td><%=food.measurement_unit %> </td>
+    <td> $ <%=food.price %> </td>
+    <td>
+        <a href="#">
+            <% if current_user && current_user.id == food.user_id %>
+            <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: 'Are you sure you want to delete this food item?' }, class: 'food-delete-btn' %>
+            <% end %>
+        </a>
+    </td>
+</tr>
