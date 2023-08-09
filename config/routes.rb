@@ -2,10 +2,10 @@
 
 Rails.application.routes.draw do
   devise_for :users
-
+  # root 'foods#index' 
   resources :users, only: %i[show edit update]
 
-  resources :foods, only: [index, :create]
+  resources :foods, only: [:index, :new, :create, :destroy]
 
   # Add the following lines to create routes for viewing recipe details and deleting recipes
   resources :recipes, only: %i[show destroy index]
