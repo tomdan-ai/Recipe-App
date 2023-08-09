@@ -1,11 +1,7 @@
 class FoodsController < ApplicationController
   def index
-    @user_id = params[:user_id] # Retrieve user_id from parameters
-    @foods = if @user_id.present?
-               Food.where(user_id: @user_id)
-             else
-               Food.all
-             end
+    @user_id = current_user.id # Retrieve user_id from parameters
+    @foods = @user_id.present? ? Food.where(user_id: @user_id) : Food.all
   end
 
   def new
