@@ -23,6 +23,18 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+
+    authorize! :destroy, @recipe
+
+    if @recipe.destroy
+      redirect_to recipes_path, alert: 'Recipe successfully deleted.'
+    else
+      redirect_to recipes_path, alert: 'Failed to delete recipe.'
+    end
+  end
+
   def public_recipe
     @public_recipes = Recipe.where(public: true).order(created_at: :desc)
   end
