@@ -1,0 +1,25 @@
+<table>
+    <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Action</th>
+    </tr>
+    
+    <% recipe_food.each do |food|%>
+        <tr> 
+            <td> 
+                <%=food.name%>
+            </td>
+            <td> 
+                <%=food.quantity%>
+            </td>
+            <td> 
+                <%=food.price%>
+            </td>
+            <td> 
+                <a> remove </a>
+            </td>
+        </tr>
+    <% end %>
+</table>
