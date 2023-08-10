@@ -1,9 +1,88 @@
 <%= render 'layouts/header' %>
-<h1><%= @recipe.name %></h1>
 
+<h1><%= @recipe.name %></h1>
 <p><strong>Prescription Time:</strong> <%= @recipe.prescription_time %></p>
 <p><strong>Cooking Time:</strong> <%= @recipe.cooking_time %> minutes</p>
+<div class="recipe-stat col-md-3">
+       <h3><% if @recipe.public? %>Public<%else%>Private<%end%></h2>
+       <% if @recipe.user == current_user %>
+        <label class="switch">
+          <input type="checkbox" <%= @recipe.public? ? 'checked' : '' %> disabled>
+          <span class="slider round"></span>
+        </label>
+      <% end %>
+      <% if @recipe.user == current_user %>
+        <%= button_to @recipe.public? ? 'Make Private' : 'Make Public', public_recipe_recipes_path( @recipe.id), method: :post, remote: true ,
+              class: 'btn btn'%>
+      <%else%>
+      <p> Be Authorize </p>
+      <%end%>
+</div>
 <p><strong>Description:</strong> <%= @recipe.description %></p>
 <p><strong>Public:</strong> <%= @recipe.public ? 'Yes' : 'No' %></p>
+<% if can?(:update,@recipe) || @recipe.public  %>
+<div class = 'preparation-toggle'> 
 
-<%= link_to 'Back to Recipe List', recipes_path, class: 'btn btn-secondary' %>
+<div> 
+<% if can?(:update, @recipe) %>
+  <%= form_with(model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch) do |form| %>
+    <% if @recipe.public %>
+      <%= form.submit 'Make Private', class: 'btn btn-danger' %>
+    <% else %>
+      <%= form.submit 'Make Public', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+</div>
+</div>
+<div class = 'preparation'>
+<p> <strong> Cooking time: <%= @recipe.cooking_time %> <% if @recipe.cooking_time > 1 %> hours <% else %> hour <%end%> </strong></p>
+</div>
+<div class = 'prep-tion'>
+<p><strong> Recipe steps:</strong> <%= @recipe.description %>  </p>
+</div>
+
+
+ <div class="preparation-toggle ">
+<%= button_to "Generate shopping list", general_shopping_lists_path, method: :get, class: "btn btn-primary generator " %>
+
+<%= button_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary generator" %>
+
+</div> 
+
+
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th> Food </th>
+<th> Quantity </th>
+<th> Value </th>
+<th> Actions </th>
+ </tr>
+ </thead>
+ <tbody>
+ <% @recipe.recipe_foods.each do |recipe_food| %> 
+ <tr>
+  <td> <%= recipe_food.food.name %> </td>
+   <td><%="#{recipe_food.quantity} #{recipe_food.food.measurement_unit}"%></td>
+    <td><%= recipe_food.quantity * recipe_food.food.price %>$</td>
+    <%if can?(:update,@recipe)%>
+    
+    <td class='meta-k'>
+    <div class="button-group">
+    <%= button_to 'Delete',recipes_recipe_food_path(@recipe,recipe_food),method: :delete, class: 'btn btn-danger' %>
+    <button class='btn btn-success'>Modify 
+    </div>
+    </td>
+
+    <%end%>
+  </tr>
+
+ <%end%>
+ </tbody>
+
+<table>
+<%else%>
+<h2 class='header-title'> This recipe is private </h2>
+<%end%>
