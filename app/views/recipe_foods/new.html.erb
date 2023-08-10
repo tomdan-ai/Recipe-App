@@ -1,3 +1,5 @@
+<%# apps/views/recipe_foods/new.html.erb %>
+<div class="res_class">
 <%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe), method: :post) do |f| %>
     <div class="form-group">
       <%= f.label :food_id %>
@@ -13,3 +15,4 @@
       <%= f.submit "Add Food", class: "btn btn-primary" %>
     </div>
   <% end %>
+  </div>

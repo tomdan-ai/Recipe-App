@@ -4,14 +4,11 @@
 <h1>Public Recipes</h1>
 <ul>
   <% @public_recipes.each do |recipe| %>
-    <li>
+    <li class="public_li">
       <%= link_to recipe.name, recipe_path(recipe) %>
-      <%= recipe.description %>
-
-      <span>Added by: <%= recipe.user.name %></span>
+    <br>
+      <span>by: <%= recipe.user.name %></span>
     </li>
   <% end %>
 </ul>
 
-<%= link_to 'Back to Profile', user_path(current_user) %>
-<%= link_to 'Create New Recipe', new_recipe_path, class: 'btn btn-primary' %>

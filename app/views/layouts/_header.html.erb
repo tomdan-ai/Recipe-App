@@ -1,14 +1,13 @@
+<%# apps/views/layout/_header.html.erb %>
 <div class="center-container">
-<p class="nav_name">Hello <%= current_user.name%></p>
 <nav>
+<p class="nav_name">Hello <%= current_user.name%></p>
   <div class="menu">
-    <div class="mobile-menu-toggle">&#9776;</div>
     <ul class="menu-items">
     <li><%= link_to 'Foods', foods_path, class: "nav-item" %></li>
       <li><%= link_to 'Recipes', recipes_path, class: "nav-item" %></li>
       <%= link_to 'Public Recipes', public_recipe_recipes_path, class: "nav-item" %>
       <li><%= link_to 'General Shopping List', general_shopping_lists_path, class: "nav-item" %></li>
-      <li>
         <% if user_signed_in? %>
           <div class="sign_out">
           </div>
