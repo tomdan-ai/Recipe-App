@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :recipes, only: %i[index show destroy new create] do
     resources :recipe_foods, only: %i[new create]
-    
   end
   resources :general_shopping_lists, only: %i[index]
 
@@ -21,5 +20,3 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 end
-
-
