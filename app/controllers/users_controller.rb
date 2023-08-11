@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @user_recipes = @user.recipes.includes(:recipe_foods)
   end
 
   def edit
