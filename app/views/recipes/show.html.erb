@@ -12,8 +12,7 @@
         </label>
       <% end %>
       <% if @recipe.user == current_user %>
-        <%= button_to @recipe.public? ? 'Make Private' : 'Make Public', public_recipe_recipes_path( @recipe.id), method: :post, remote: true ,
-              class: 'btn btn'%>
+<%= button_to @recipe.public? ? 'Make Private' : 'Make Public', public_recipe_recipes_path(@recipe), method: :patch, remote: true, class: 'btn btn' %>
       <%else%>
       <p> Be Authorize </p>
       <%end%>
@@ -65,16 +64,20 @@
   <td> <%= recipe_food.food.name %> </td>
    <td><%="#{recipe_food.quantity} #{recipe_food.food.measurement_unit}"%></td>
     <td><%= recipe_food.quantity * recipe_food.food.price %>$</td>
-    <%if can?(:update,@recipe)%>
+    
     
     <td class='meta-k'>
     <div class="button-group">
-    <%= button_to 'Delete',recipes_recipe_food_path(@recipe,recipe_food),method: :delete, class: 'btn btn-danger' %>
+    <% if @recipe.user == current_user %>
+    <%= button_to 'Delete',recipe_recipe_food_path(@recipe,recipe_food),method: :delete, class: 'btn btn-danger' %>
     <button class='btn btn-success'>Modify </button>
+     <%else%>
+      <p> Unauthorized </p>
+      <%end%>
     </div>
     </td>
 
-    <%end%>
+ 
   </tr>
 
  <%end%>

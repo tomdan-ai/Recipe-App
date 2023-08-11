@@ -1,5 +1,6 @@
 class RecipeFoodsController < ApplicationController
-  before_action :set_recipe, only: %i[create new]
+  before_action :set_recipe, only: [:create, :new]
+  before_action :set_recipe_food, only: [:destroy]
 
   def new
     @recipe_food = RecipeFood.new
@@ -15,10 +16,19 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe_food.destroy
+    redirect_to recipe_path(@recipe_food.recipe), notice: 'Food item removed from the recipe.'
+  end
+
   private
 
   def set_recipe
     @recipe = Recipe.find(params[:recipe_id])
+  end
+
+  def set_recipe_food
+    @recipe_food = RecipeFood.find(params[:id])
   end
 
   def recipe_food_params

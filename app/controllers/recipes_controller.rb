@@ -25,6 +25,13 @@ class RecipesController < ApplicationController
     end
   end
 
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+    @recipe.toggle!(:public)
+    redirect_to recipe_path(@recipe), notice: 'Recipe privacy status has been updated.'
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
 
@@ -37,7 +44,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def toggle_public
+  def public_recipe
     @recipe = Recipe.find(params[:id])
     @recipe.update(public: !@recipe.public)
     redirect_to @recipe, notice: 'Recipe public status updated.'
