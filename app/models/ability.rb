@@ -10,6 +10,8 @@ class Ability
     return unless user.persisted? # Logged-in users
 
     can :create, Recipe
+    can :modify, Recipe
     can :destroy, Recipe, user_id: user.id
+    can :destroy, Food, user_id: user.id
   end
 end

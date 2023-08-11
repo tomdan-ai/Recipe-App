@@ -1,3 +1,5 @@
+<%# apps/views/foods/new.html.erb %>
+<%= render 'layouts/header' %>
 <div class="add-food-form-main-container">
 <h3>Food creation form</h3>
 <%= form_with model: @food, url: foods_path, class:'add-food-forms-container', method: :post do |form| %>
