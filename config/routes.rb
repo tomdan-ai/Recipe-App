@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :foods, only: %i[index new create destroy]
 
   resources :recipes, only: %i[index show destroy new create] do
-    member do
-      patch 'public_recipe', to: 'recipes#public_recipe', as: :public_recipe_recipes
-    end
+    # member do
+    #   patch '/public_recipes/:id', to: 'public_recipes#update', as: :update_public_recipe
+    # end
+    patch 'toggle_public', on: :member
     resources :recipe_foods, only: %i[new create destroy]
   end
   resources :general_shopping_lists, only: %i[index]

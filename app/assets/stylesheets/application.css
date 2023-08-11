@@ -150,6 +150,10 @@ body {
   width: 400px;
 }
 
+h1 {
+  text-align: center;
+}
+
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -284,6 +288,8 @@ button[type="submit"]:hover {
 }
 
 .public_li {
+  display: flex;
+  gap: 20%;
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;

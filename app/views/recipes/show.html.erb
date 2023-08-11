@@ -12,7 +12,7 @@
         </label>
       <% end %>
       <% if @recipe.user == current_user %>
-<%= button_to @recipe.public? ? 'Make Private' : 'Make Public', public_recipe_recipes_path(@recipe), method: :patch, remote: true, class: 'btn btn' %>
+<%= button_to @recipe.public? ? 'Make Private' : 'Make Public', toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'btn btn' %>
       <%else%>
       <p> Be Authorize </p>
       <%end%>
