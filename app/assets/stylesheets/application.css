@@ -216,17 +216,12 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-
-
-
-/* General styling */
 .center-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Header styles */
 .navbar {
   background-color: #333;
   color: white;
