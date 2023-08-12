@@ -2,7 +2,7 @@
 <%= render 'layouts/header' %>
 
 <h1 class="recipe_name"><%= @recipe.name %></h1>
-<p><strong>Preparation Time:</strong> <%= @recipe.prescription_time %></p>
+<p><strong>Preparation Time:</strong> <%= @recipe.prescription_time %> Hours</p>
 <div class="recipe-stat col-md-3">
        <h3><% if @recipe.public? %>Public<%else%>Private<%end%></h2>
        <% if @recipe.user == current_user %>
@@ -43,9 +43,11 @@
 
  <div class="preparation-toggle ">
 <%= button_to "Generate shopping list", general_shopping_lists_path, method: :get, class: "btn btn-primary generator " %>
-
+<% if @recipe.user == current_user %>
 <%= button_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary generator" %>
-
+<%else%>
+      <p> Your not authorized to add Ingredient</p>
+      <%end%>
 </div> 
 
 
@@ -63,7 +65,7 @@
  <tr>
   <td> <%= recipe_food.food.name %> </td>
    <td><%="#{recipe_food.quantity} #{recipe_food.food.measurement_unit}"%></td>
-    <td><%= recipe_food.quantity * recipe_food.food.price %>$</td>
+    <td>$<%= recipe_food.quantity * recipe_food.food.price %></td>
     
     
     <td class='meta-k'>
