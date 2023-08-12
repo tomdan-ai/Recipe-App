@@ -60,3 +60,6 @@ gem 'devise'
 
 # Authorization
 gem 'cancancan'
+
+# Dependencie for Deployment
+gem 'pg'
