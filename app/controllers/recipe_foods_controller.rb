@@ -1,5 +1,5 @@
 class RecipeFoodsController < ApplicationController
-  before_action :set_recipe, only: %i[create new]
+  before_action :set_recipe, only: %i[new create]
   before_action :set_recipe_food, only: [:destroy]
 
   def new
@@ -28,7 +28,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def set_recipe_food
-    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food = RecipeFood.includes(:recipe).find(params[:id])
   end
 
   def recipe_food_params
