@@ -1,0 +1,30 @@
+<%# apps/views/layout/_header.html.erb %>
+<div class="center-container">
+<nav>
+<p class="nav_name">Hello <%= current_user.name%></p>
+  <div class="menu">
+    <ul class="menu-items">
+    <li><%= link_to 'Foods', foods_path, class: "nav-item" %></li>
+      <li><%= link_to 'Recipes', recipes_path, class: "nav-item" %></li>
+      <%= link_to 'Public Recipes', public_recipe_recipes_path, class: "nav-item" %>
+      <li><%= link_to 'General Shopping List', general_shopping_lists_path, class: "nav-item" %></li>
+        <% if user_signed_in? %>
+          <div class="sign_out">
+          </div>
+        <% else %>
+          <%= button_to "Sign In", new_user_session_path, class: "nav-btn" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- JavaScript code to toggle menu items -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.mobile-menu-toggle').click(function() {
+    $('.menu-items').toggleClass('show');
+  });
+});
+</script>

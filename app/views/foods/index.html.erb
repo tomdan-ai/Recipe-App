@@ -1,0 +1,27 @@
+<%# apps/views/foods/index.html.erb %>
+<%= render 'layouts/header' %>
+<div class='food-table-container'>
+  <div class="add-food-btn-container">
+  <%= link_to "Add food", new_food_path(user_id: @user_id), class: 'add-food-btn'%>
+  </div>
+  
+  <% if @foods.length.zero? %>
+    <p>No foods available!!</p>
+  <% else %>
+    <table>
+     
+        <tr class="table-header-row">
+          <th>Foods</th>
+          <th>Measurement unit</th>
+          <th>Unit price</th>
+          <th>Actions</th>
+        </tr>
+  
+      <tbody>
+        <% @foods.each do |food| %>
+          <%= render partial: 'shared/food_row_card', locals: { food: food } %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

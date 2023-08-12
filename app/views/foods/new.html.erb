@@ -1,0 +1,52 @@
+<%# apps/views/foods/new.html.erb %>
+<%= render 'layouts/header' %>
+<div class="add-food-form-main-container">
+<h3>Food creation form</h3>
+<%= form_with model: @food, url: foods_path, class:'add-food-forms-container', method: :post do |form| %>
+  <%= form.hidden_field :user_id, value: @user_id %>
+
+    <div class='add-food-form-label-input-container'>
+      <%= form.label :name, class:'add-food-form-label' %>
+      <%= form.text_field :name, class:'add-food-form-input' %>
+    </div>
+
+    <div class='add-food-form-label-input-container'>
+      <%= form.label :measurement_unit, class:'add-food-form-label' %>
+      <%= form.text_field :measurement_unit, class:'add-food-form-input' %>
+    </div>
+
+    <div class='add-food-form-label-input-container'>
+      <%= form.label :quantity, class:'add-food-form-label' %>
+      <%= form.number_field :quantity, class:'add-food-form-input' %>
+    </div>
+
+    <div class='add-food-form-label-input-container'>
+      <%= form.label :price, class: 'add-food-form-label' %>
+      <%= form.number_field :price, class:'add-food-form-input' %>
+    </div>
+
+
+      <!-- Add this below the form -->
+
+<% if @food.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+    <ul>
+    <% @food.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+    <div>
+      <%= form.submit "Create Food", class: 'create-food-btn' %>
+    </div>
+ 
+<% end %>
+
+<%= link_to "Back to Food List", foods_path %>
+
+</div>

@@ -1,0 +1,93 @@
+<%# apps/views/recipe/show.html.erb %>
+<%= render 'layouts/header' %>
+
+<h1 class="recipe_name"><%= @recipe.name %></h1>
+<p><strong>Preparation Time:</strong> <%= @recipe.prescription_time %> Hours</p>
+
+<div class = 'preparation'>
+<p> <strong> Cooking time: <%= @recipe.cooking_time %> <% if @recipe.cooking_time > 1 %> hours <% else %> hour <%end%> </strong></p>
+</div>
+<div class = 'prep-tion'>
+<p><strong>Steps to go:</strong> <%= @recipe.description %>  </p>
+</div>
+
+
+ <div class="preparation-toggle ">
+<%= button_to "Generate shopping list", general_shopping_lists_path, method: :get, class: "btn btn-primary generator " %>
+<% if @recipe.user == current_user %>
+<%= button_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary generator" %>
+<%else%>
+      <p> Your not authorized to add Ingredient</p>
+      <%end%>
+</div> 
+
+
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th> Food </th>
+<th> Quantity </th>
+<th> Value </th>
+<th> Actions </th>
+ </tr>
+ </thead>
+ <tbody>
+ <% @recipe.recipe_foods.each do |recipe_food| %> 
+ <tr>
+  <td> <%= recipe_food.food.name %> </td>
+   <td><%="#{recipe_food.quantity} #{recipe_food.food.measurement_unit}"%></td>
+    <td>$<%= recipe_food.quantity * recipe_food.food.price %></td>
+    
+    
+    <td class='meta-k'>
+    <div class="button-group">
+    <% if @recipe.user == current_user %>
+    <%= button_to 'Delete',recipe_recipe_food_path(@recipe,recipe_food),method: :delete, class: 'btn btn-danger' %>
+    <button class='btn btn-success'>Modify </button>
+     <%else%>
+      <p> Unauthorized </p>
+      <%end%>
+    </div>
+    </td>
+
+ 
+  </tr>
+
+ <%end%>
+ </tbody>
+
+<table>
+
+<div class="recipe-stat col-md-3">
+       <h3><% if @recipe.public? %>Public<%else%>Private<%end%></h2>
+       <% if @recipe.user == current_user %>
+        <label class="switch">
+          <input type="checkbox" <%= @recipe.public? ? 'checked' : '' %> disabled>
+          <span class="slider round"></span>
+        </label>
+      <% end %>
+      <% if @recipe.user == current_user %>
+<%= button_to @recipe.public? ? 'Make Private' : 'Make Public', toggle_public_recipe_path(@recipe), method: :patch, remote: true, class: 'btn btn' %>
+      <%else%>
+      <p> Be Authorize </p>
+      <%end%>
+</div>
+<% if can?(:update,@recipe) || @recipe.public  %>
+<div class = 'preparation-toggle'> 
+
+<div> 
+<% if can?(:update, @recipe) %>
+  <%= form_with(model: @recipe, url: toggle_public_recipe_path(@recipe), method: :patch) do |form| %>
+    <% if @recipe.public %>
+      <%= form.submit 'Make Private', class: 'btn btn-danger' %>
+    <% else %>
+      <%= form.submit 'Make Public', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+</div>
+</div>
+<%else%>
+<h2 class='header-title'> This recipe is private </h2>
+<%end%>
