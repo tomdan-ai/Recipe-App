@@ -42,6 +42,8 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Lint/RaiseException:
   Enabled: false
+Lint/EmptyBlock:
+  Enabled: false
 Lint/StructNewOverride:
   Enabled: false
 Style/HashEachMethods:
