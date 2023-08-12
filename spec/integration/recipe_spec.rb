@@ -8,7 +8,6 @@ RSpec.describe 'Recipes index', type: :feature do
 
   let!(:recipe2) { Recipe.create(name: 'Pizza', user:) }
 
-
   it 'displays recipes when logged in' do
     login_as user, scope: :user
     visit recipes_path
