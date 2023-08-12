@@ -16,7 +16,8 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to foods_path(@food), notice: 'Food created successfully.'
     else
-      puts @food.errors.full_messages
+      # Render new template
+      render :new
     end
   end
 
