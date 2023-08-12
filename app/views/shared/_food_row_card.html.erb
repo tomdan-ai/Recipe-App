@@ -1,8 +1,8 @@
 
 <tr>
-    <td><%=food.name %> </td>
-    <td><%=food.measurement_unit %> </td>
-    <td> $ <%=food.price %> </td>
+    <td class='food-name'><%=food.name %> </td>
+    <td class='food-measurement'><%=food.measurement_unit %> </td>
+    <td class='food-price'> $ <%=food.price %> </td>
     <td>
         <a href="#">
             <% if current_user && current_user.id == food.user_id %>
