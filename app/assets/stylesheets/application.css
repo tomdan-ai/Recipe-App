@@ -309,6 +309,10 @@ button[type="submit"]:hover {
   margin-left: -265px;
 }
 
+.preparation p {
+  margin-top: 55px;
+}
+
 .res_class {
   border: 1px solid;
   margin: 20%;
@@ -376,4 +380,10 @@ nav {
 .button-group {
   display: flex;
   justify-content: space-evenly;
+}
+
+#error_explanation {
+  color: red;
+  border: 1px solid red;
+  padding: 10px;
 }

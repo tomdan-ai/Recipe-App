@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'registrations',
+    sessions: 'sessions'
+  }
+
   resources :users, only: %i[show edit update]
 
   resources :foods, only: %i[index new create destroy]

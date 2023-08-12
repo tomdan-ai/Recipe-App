@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_808_064_433) do
 
   create_table 'recipes', force: :cascade do |t|
     t.string 'name'
-    t.datetime 'prescription_time'
+    t.integer 'prescription_time'
     t.integer 'cooking_time'
     t.text 'description'
     t.boolean 'public'
