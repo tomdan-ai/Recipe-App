@@ -6,6 +6,7 @@ default: &default
 development:
   <<: *default
   database: recipe_app
+  host: localhost
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   host: localhost
